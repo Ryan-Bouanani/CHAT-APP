@@ -29,9 +29,9 @@
                 // si l'adresse mail et le mdp existe en bdd
                 if ($selectUser->rowCount() > 0) {
 
-                    $status = 'connecté';
+                    $status = 'online';
 
-                    // on update le status en connecté
+                    // on update le status en online
                     $updateStatus = $db->query("UPDATE `users` SET status = '$status' WHERE 'emailAdress' = '$emailAdress' AND `password` = '$password'");
 
                     if ($updateStatus) {
@@ -44,24 +44,24 @@
                         header("Location:homeChat.php");
                     } else {
                         $error = urlencode('Une erreur est survenue veuillez réessayer');
-                        // header('Location:login.php?error=' . $error);
+                        header('Location:login.php?error=' . $error);
                     }
 
                 } else {
                     $error = urlencode('Vos identifiants sont incorrects !');
-                    // header('Location:login.php?error=' . $error);
+                    header('Location:login.php?error=' . $error);
                 }
 
 
 
             } else {
                 $error = urlencode('Veuillez entrez une adresse mail valide !');
-                // header('Location:login.php?error=' . $error);
+                header('Location:login.php?error=' . $error);
             }
 
         } else {
             $error = urlencode('Veuillez remplir tous les champs !');
-            // header('Location:login.php?error=' . $error);   
+            header('Location:login.php?error=' . $error);   
         }
     }
 ?>

@@ -14,7 +14,7 @@
             // on select l'utilisateur actuelle
             $user = $db->query("SELECT * FROM `users` WHERE emailAdress = '$userMail'");
 
-            // si select réussie on stocke cesdonnées puis on les affiches
+            // si select réussie on stocke ces données puis on les affiches
             if ($user->rowCount() > 0) {
 
                 $dataUser = $user->fetchAll(pdo::FETCH_ASSOC)[0];
@@ -36,16 +36,14 @@
                 <img class="imageProfil" src="assets/images/<?php echo $dataUser['image'];?>" alt="photo de profile">
                 <div class="name">
                     <h1><?php echo $dataUser['firstName'] . ' aaaaaaaaaaaaaaaaaaaa' . $dataUser['lastName']?></h1>
-                    <p class="status"><?php echo $dataUser['status']?></p>
+                    <p class="statusText"><?php echo $dataUser['status']?></p>
                 </div>
-                <img class="imageStatus" src="assets/status.png" alt="status">
-                <a class="logout" href="logout.php">Déconnexion</a>
+                <i class="fas fa-circle status"></i> 
+                <i class="fas fa-search searchIcon"></i>    
             </header>
-            <div class="infoSearch">
-                <h2>Choississez un utilisateur</h2>
-                <input type="search" placeholder="Recherché un utilisateur">
-                <i class="fas fa-search"></i>
-            </div>
+            
+            <input class="searchInput" type="search" placeholder="Recherché un utilisateur">
+            <h2 class="h2">Choississez un utilisateur</h2>
 
 
             <div class="usersList">
@@ -54,13 +52,13 @@
                 ?>
                 <div class="user">
                 <div class="leftUser">
-                        <img class="imageProfil" src="assets/photoProfile.png" alt="">
-                        <div class="name">
-                            <h3>Jean Pierre</h3>
-                            <p class="message">Hello comment tu vas depuis le temps ?</p>
-                        </div>
+                    <img class="imageProfil" src="assets/photoProfile.png" alt="">
+                    <div class="name">
+                        <h3>Jean Pierre</h3>
+                        <p class="message">Hello comment tu vas depuis le temps ?</p>
                     </div>
-                    <img class="imageStatus" src="assets/status.png" alt="status">            
+                </div>
+                  <i class="fas fa-circle"></i>          
                 </div>
                 <div class="user">
                 <div class="leftUser">
@@ -70,7 +68,7 @@
                             <p class="message">Hello comment tu vas depuis le temps ?</p>
                         </div>
                     </div>
-                    <img class="imageStatus" src="assets/status.png" alt="status">            
+                  <i class="fas fa-circle"></i>          
                 </div>
                 <div class="user">
                     <div class="leftUser">
@@ -80,8 +78,13 @@
                             <p class="message">Hello comment tu vas depuis le temps ?</p>
                         </div>
                     </div>
-                    <img class="imageStatus" src="assets/status.png" alt="status">            
+                  <i class="fas fa-circle"></i>          
                 </div>
             </div>
+            <a class="logout" href="logout.php">Déconnexion</a>
         </div>
+
+        <script src="javascript/homeChat.js"></script>
     </body>
+
+    </html>

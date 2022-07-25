@@ -1,11 +1,12 @@
 
+// login & signup
 const inputsPassword = document.querySelectorAll('.formRight .password input[type="password"]');
 const eyesIcons = document.querySelectorAll('.formRight .password i');
-console.log(eyesIcons);
+
+
 const errorDiv = document.querySelector('.container .errorDiv');
-console.log(errorDiv);
 const btnSubmit = document.querySelector('.container .formRight form input[type="submit"]');
-console.log(errorDiv);
+
 
 // hide password
     eyesIcons[0].addEventListener('click', () => {
@@ -24,10 +25,12 @@ console.log(errorDiv);
             }
     });
 
+
+    // password differents
     let errorP = document.createElement('p');
     errorP.className = 'errorMessage';
     errorP.textContent = 'Les mots de passe sont différents';
-// password differents
+    
     inputsPassword[1].addEventListener("keyup", () => {
         if (inputsPassword[0].value !== inputsPassword[1].value) {
             errorDiv.append(errorP);
@@ -37,6 +40,8 @@ console.log(errorDiv);
             btnSubmit.disabled = false;
         }
     })
+
+
 
 
 

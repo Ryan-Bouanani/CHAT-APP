@@ -22,6 +22,13 @@ $db->exec('CREATE TABLE IF NOT EXISTS `users` (
     `password` VARCHAR(255) NOT NULL, 
     `image` VARCHAR(255) NOT NULL,
     `status` VARCHAR(255) NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4');
+
+$db->exec('CREATE TABLE IF NOT EXISTS `messages` (
+    `id` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `userSenderId` INT(11) NOT NULL,
+    `userReceiverId` INT(11) NOT NULL,
+    `message` VARCHAR(255) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4')
 
 

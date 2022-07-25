@@ -58,7 +58,7 @@
 
                                         // on hache le mdp
                                         $password = sha1($password1);
-                                        $status = "connecté";
+                                        $status = "online";
 
                                         
                                         // on insert notre nouvelle utilisateur

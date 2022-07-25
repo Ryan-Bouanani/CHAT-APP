@@ -4,8 +4,8 @@
         //se connecter à la base de donnée
         include "connexionBdd.php";
 
-        // on update le status en déconnecté
-        $status = 'déconnecté';
+        // on update le status en offline
+        $status = 'offline';
         $updateStatus = $db->prepare("UPDATE `users` SET status = '$status' WHERE 'emailAdress' = '$emailAdress'");
 
         if ($updateStatus) {
