@@ -192,8 +192,8 @@ div.formLeft .illustrationLeftHomeChat {
 }
 header.top {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 2rem;
     position: relative;
 }
@@ -202,6 +202,11 @@ div.topLeft {
     align-items: center;
     gap: 1.5rem;
     justify-content: space-between;
+}
+
+div.topLeft.chat {
+    margin: 0 auto;
+    justify-content: center;
 }
 div.formRight a.logout {
     display: block;

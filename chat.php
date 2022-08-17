@@ -29,14 +29,14 @@
                 }
             ?>
             <a href="homeChat.php"><div class="arrowReturn"></div></a>
-                <div class="topLeft">
+                <div class="topLeft chat">
                     <img class="imageProfil" src="assets/images/<?= $dataUser['image'] ?>" alt="photo de profile">
                     <div class="name">
                         <h1><?= $dataUser['firstName'] ?></h1>
                         <p class="statusText"><?= $dataUser['status'] ?></p>
                     </div>
                 </div>
-                <i class="fas fa-circle status"></i>   
+
             </header>
 
             <div class="chatContainer">
