@@ -43,7 +43,7 @@ chatContainer.onmouseleave = ()=>{
     chatContainer.classList.remove("active");
 }
 
-setInterval(() => {  
+// setInterval(() => {  
    let xhr = new XMLHttpRequest();
    xhr.open('POST', 'getMessage.php', true);
    xhr.onload = () => {
@@ -57,7 +57,7 @@ setInterval(() => {
    };
    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
    xhr.send();
-},500);
+// },500);
 
 
 function scrollToBottom() {

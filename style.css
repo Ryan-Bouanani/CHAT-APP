@@ -249,6 +249,7 @@ input.searchInput {
     justify-content: center;
     gap: 0.5rem;
 }
+
 .usersList .user .leftUser 
 p.message, p.statusText {
     color: #C3C3C3;
@@ -303,9 +304,23 @@ section.container.chat form textarea {
     width: 80%;
     resize: none;
 }
+
+section.container.chat span.dateMessage {
+    font-size: 0.8rem;
+    margin: 0 auto;
+}
+section.container.chat span.hourMessage {
+    font-size: 0.8rem;
+    width: fit-content;
+     /* display: block; */
+    /* text-align: end;  */
+}
+section.container.chat span.hourMessage.right {
+    margin-left: auto;
+}
 section.container.chat .messageSend {
     padding: 10px;
-    display: flex;
+    /* display: flex; */
     line-height: 1.3rem;
     max-width: calc(100% - 130px);
     /* width: fit-content; */
