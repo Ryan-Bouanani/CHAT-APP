@@ -1,7 +1,14 @@
 
     <?php
+        session_start();
+
+        if (isset($_SESSION['userMail'])) {
+            header('Location:homeChat.php');
+        };
+        
         include 'head.php';
     ?>
+<body>  
     <section class="container">
         <div class="formLeft">
             <div class="illustrationFormLeft"></div>
@@ -23,7 +30,7 @@
                 <div class="password">
                     <label for="password">Mot de passe</label>
                     <input type="password" name="password" placeholder="Entrez votre mot de passe" required>
-                    <i class="fas fa-eye"></i>
+                    <i class="fas fa-eye-slash"></i>
                 </div>
                 <div class="formSubmit">
                     <input type="submit" name="submitLogin" value="Se connecter">
@@ -35,6 +42,6 @@
         </div>
     </section>
 
-    <script src="index.js"></script>
+    <script src="javascript/index.js"></script>
 </body>
 </html>

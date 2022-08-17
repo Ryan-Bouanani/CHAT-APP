@@ -23,23 +23,21 @@
                 // on hache le mdp
                 $password = sha1($password);
                 // on verifie si les données del'utilisateur corresponde à un user en bdd
-                $selectUser = $db->query("SELECT * FROM `users` WHERE emailAdress = '$emailAdress' AND password = '$password'");
+                $selectUser = $db->query("SELECT * FROM `user` WHERE emailAdress = '$emailAdress' AND password = '$password'");
 
 
                 // si l'adresse mail et le mdp existe en bdd
                 if ($selectUser->rowCount() > 0) {
 
-                    $status = 'online';
+                    $status = 'connecter';
 
-                    // on update le status en online
-                    $updateStatus = $db->query("UPDATE `users` SET status = '$status' WHERE 'emailAdress' = '$emailAdress' AND `password` = '$password'");
+                    // on update le status en connecter
+                    $updateStatus = $db->query("UPDATE `user` SET status = '$status' WHERE emailAdress = '$emailAdress' AND password = '$password'");
 
                     if ($updateStatus) {
 
                         $_SESSION['userMail'] = $emailAdress;
                         
-                        $_SESSION['is_connected'] = true;
-
                         //redirection vert la page chat
                         header("Location:homeChat.php");
                     } else {

@@ -14,7 +14,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4')
 
 
-$db->exec('CREATE TABLE IF NOT EXISTS `users` (
+$db->exec('CREATE TABLE IF NOT EXISTS `user` (
     `id` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `firstName` VARCHAR(255) NOT NULL, 
     `lastName` VARCHAR(255) NOT NULL, 
@@ -24,7 +24,7 @@ $db->exec('CREATE TABLE IF NOT EXISTS `users` (
     `status` VARCHAR(255) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4');
 
-$db->exec('CREATE TABLE IF NOT EXISTS `messages` (
+$db->exec('CREATE TABLE IF NOT EXISTS `message` (
     `id` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `userSenderId` INT(11) NOT NULL,
     `userReceiverId` INT(11) NOT NULL,

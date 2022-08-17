@@ -1,6 +1,12 @@
 <?php
-        include 'head.php';
-    ?>
+    session_start();
+
+    if (isset($_SESSION['userMail'])) {
+        header('Location:homeChat.php');
+    };
+    
+    include 'head.php';
+?>
 <body>
     <section class="container">
         <div class="formLeft">
@@ -33,13 +39,13 @@
                 <div class="password">
                     <label for="password1">Mot de passe</label>
                     <input type="password" id="password1" name="password1" placeholder="Entrez un mot de passe"class="mdp2" required value="<?= htmlentities($_POST['password1'] ?? '')?>">
-                    <i class="fas fa-eye"></i>
+                    <i class="fa-solid fa-eye-slash"></i>
                 </div>
                 <div class="password">
                     <label for="password2">Confirmer votre mot de passe</label>
                     <input type="password" id="password2"
                     name="password2" placeholder="Confirmer votre mot de passe" class="mdp2" required value="<?= htmlentities($_POST['password2'] ?? '')?>">
-                    <i class="fas fa-eye"></i>
+                    <i class="fa-solid fa-eye-slash"></i>
                 </div>
                 <div class="image">
                     <label for="imageProfil">Choisissez une image</label>
@@ -55,6 +61,6 @@
         </div>
     </section>
 
-    <script src="index.js"></script>
+    <script src="javascript/index.js"></script>
 </body>
 </html>

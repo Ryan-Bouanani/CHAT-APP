@@ -4,12 +4,16 @@
         //se connecter à la base de donnée
         include "connexionBdd.php";
 
-        // on update le status en offline
-        $status = 'offline';
-        $updateStatus = $db->prepare("UPDATE `users` SET status = '$status' WHERE 'emailAdress' = '$emailAdress'");
+        $emailAdress = $_SESSION['userMail'];
 
+        // on update le status en offline
+        $status = 'deconnecter';
+        $updateStatus = $db->query("UPDATE `user` SET status = '$status' WHERE emailAdress = '$emailAdress'");
+
+        // $updateStatus = $db->query("UPDATE `user` SET status = '$status' WHERE 'emailAdress' = '$emailAdress' AND `password` = '$password'");
         if ($updateStatus) {
 
+            echo 'change';
             //destruction de toute les sessions
             session_unset();
             session_destroy();

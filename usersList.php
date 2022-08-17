@@ -1,41 +1,33 @@
 <?php
+
+    session_start();    
+
+    if (!isset($_SESSION['userMail'])) {
+            header('Location:login.php');
+    };
+    
     //se connecter à la base de donnée
-    include "connexionBdd.php";
+     include "connexionBdd.php";
 
     // on recupere le mail de l'utilisateur connecté
     $userMail = $_SESSION['userMail'];
 
     // on select tout les users sauf l'utilisateur principal
-    $usersQuery = $db->query("SELECT * FROM `users` WHERE NOT emailAdress = '$userMail'");
+    $usersQuery = $db->query("SELECT * FROM `user` WHERE NOT emailAdress = '$userMail'");
 
     $renderedUser = "";
+
+    // si la requette ne trouve pas d'utilisateurs
     if ($usersQuery->rowCount() == 0) {
-        $renderedUser .= "Il n'y a pas d'utilisateur pour le moment";
+
+        $renderedUser .= "Il n'y a pas d'utilisateur trouvés pour le moment";
+
+    // sinon on affiche les autres utilisateurs
     } elseif ($usersQuery->rowCount() > 0) {
        
-        while ($users = $usersQuery->fetchAll(PDO::FETCH_ASSOC)) {
-
-            foreach ($users as $userKey => $user) {
-           
-            ($user['status'] === 'online') ? $status[$userKey] = 'online' : $status[$userKey] = '' ;
-                $renderedUser .=  '<a href="chat.php?id='. $user['id'] .'">
-
-                <div class="user">
-                    <div class="leftUser">
-                        <img class="imageProfil" src="assets/images/' . $user['image'] . '" alt="">
-                        <div class="name">
-                            <h3>' . $user['firstName'] . ' ' . $user['lastName'] . '</h3>
-                            <p class="message"></p>
-                        </div>
-                    </div>
-                    <div class="status ' . $status[$userKey] . 
-                    '">
-                        <i class="fas fa-circle"></i>
-                    </div>          
-                </div>';
-            };
-        };
-    };
+        include "userListData.php";
+    }
+    // on affiche le rendue
     echo $renderedUser;
 
 ?>

@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-
     //si le formulaire est envoyé
     if (isset($_POST['submitSignup'])) {
 
@@ -20,7 +19,7 @@
                 // on vérifie si l'adresse mail est valide
                 if (filter_var($emailAdress, FILTER_VALIDATE_EMAIL)) {
                     // on vérfie si le mail est déja utilisé
-                    $selectMail = $db->query("SELECT `emailAdress` FROM `users` WHERE emailAdress = '$emailAdress'");
+                    $selectMail = $db->query("SELECT `emailAdress` FROM `user` WHERE emailAdress = '$emailAdress'");
 
                     // si l'adresse mail est déja utilisé alors erreur
                     if ($selectMail->rowCount() === 0) {
@@ -58,11 +57,11 @@
 
                                         // on hache le mdp
                                         $password = sha1($password1);
-                                        $status = "online";
+                                        $status = "connecter";
 
                                         
                                         // on insert notre nouvelle utilisateur
-                                        $insertNewUser = $db->query("INSERT INTO `users`(`firstName`, `lastName`, `emailAdress`,`password`, `image`, `status`) VALUES ('$firstName', '$lastName', '$emailAdress', '$password', '$newImageName', '$status')");
+                                        $insertNewUser = $db->query("INSERT INTO `user`(`firstName`, `lastName`, `emailAdress`,`password`, `image`, `status`) VALUES ('$firstName', '$lastName', '$emailAdress', '$password', '$newImageName', '$status')");
 
 
                                         // si l'insertion est reussie
@@ -70,9 +69,6 @@
                 
                                                 $_SESSION['userMail'] = $emailAdress;
     
-                                                // l'utilisateur est maintenant connecté
-                                                $_SESSION['is_connected'] = true;
-                                                
                                                 // redirection vers la page chat
                                                 header("Location:homeChat.php");
                                                 

@@ -1,8 +1,7 @@
 // homeChat
-const iconSearch = document.querySelector('.container .formRight .top i.searchIcon');
-const inputSearch = document.querySelector('.container .formRight input.searchInput');
-console.log(iconSearch);
-console.log(inputSearch);
+const inputSearch = document.querySelector('.container .formRight input.searchInput'),
+iconSearch = document.querySelector('.container .formRight .top i.searchIcon'),
+usersList = document.querySelector("div.usersList");
 
 
     iconSearch.addEventListener('click', () => {
@@ -15,8 +14,48 @@ console.log(inputSearch);
 
         } else {
             
+            inputSearch.value = "";
+            inputSearch.classList.remove("active");
             inputSearch.style.display = 'none';
             iconSearch.classList.remove('fa-solid', 'fa-xmark');
             iconSearch.classList.add('fas', 'fa-search');
         }
-    })
+    });
+
+
+    inputSearch.onkeyup = ()=>{
+        let searchUser = inputSearch.value;
+        console.log(searchUser);
+        if(inputSearch.value != ""){
+            inputSearch.classList.add("active");
+        }else{
+            inputSearch.classList.remove("active");
+        }
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "searchUser.php", true);
+        xhr.onload = ()=>{
+          if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                let data = xhr.response;
+                usersList.innerHTML = data;
+              }
+        }
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("searchUser=" + searchUser);
+    }
+
+setInterval(() =>{
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "usersList.php", true);
+    xhr.onload = ()=>{
+      if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+            let data = xhr.response;
+            if (!inputSearch.classList.contains('active')) {
+                usersList.innerHTML = data;            
+            }
+      }
+    }
+    xhr.send();
+  }, 500);
+
+
+  

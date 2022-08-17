@@ -7,23 +7,21 @@ const eyesIcons = document.querySelectorAll('.formRight .password i');
 const errorDiv = document.querySelector('.container .errorDiv');
 const btnSubmit = document.querySelector('.container .formRight form input[type="submit"]');
 
-
 // hide password
-    eyesIcons[0].addEventListener('click', () => {
-            if (inputsPassword[0].type === 'password') {
-                inputsPassword[0].type = 'text';
-            } else {
-                inputsPassword[0].type = 'password';   
-            }
-    });
+eyesIcons.forEach((eyesIcons, index) => {
 
-    eyesIcons[1].addEventListener('click', () => {
-            if (inputsPassword[1].type === 'password') {
-                inputsPassword[1].type = 'text';
+    eyesIcons.addEventListener('click', () => {
+            if (inputsPassword[index].type === 'password') {
+                console.log(index);
+                eyesIcons.classList.replace('fa-eye-slash', 'fa-eye');
+                inputsPassword[index].type = 'text';
             } else {
-                inputsPassword[1].type = 'password';   
+                inputsPassword[index].type = 'password';   
+                eyesIcons.classList.replace('fa-eye', 'fa-eye-slash');
             }
     });
+});
+
 
 
     // password differents
