@@ -12,7 +12,6 @@ eyesIcons.forEach((eyesIcons, index) => {
 
     eyesIcons.addEventListener('click', () => {
             if (inputsPassword[index].type === 'password') {
-                console.log(index);
                 eyesIcons.classList.replace('fa-eye-slash', 'fa-eye');
                 inputsPassword[index].type = 'text';
             } else {

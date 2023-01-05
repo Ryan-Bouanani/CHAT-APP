@@ -56,7 +56,7 @@
                 </div>
             </form>
             <div class="allReadySignup">
-                <p>Deja Inscrit(e) ? <a href="login.php">Se Connecter</a></p>
+                <p>Deja Inscrit(e) ? <a class="linkLoginRegister" href="login.php">Se Connecter</a></p>
             </div>
         </div>
     </section>

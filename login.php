@@ -37,7 +37,7 @@
                 </div>
             </form>
             <div class="allReadySignup">
-                <p>Pas encore Inscrit(e) ? <a href="signup.php">S'inscrire</a></p>
+                <p>Pas encore Inscrit(e) ? <a class="linkLoginRegister" href="signup.php">S'inscrire</a></p>
             </div>
         </div>
     </section>

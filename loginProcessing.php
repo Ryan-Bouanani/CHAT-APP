@@ -1,44 +1,44 @@
-
 <?php
     session_start();
 
-    //si le formulaire est envoyé
+    // Si le formulaire est envoyé
     if (isset($_POST['submitLogin'])) {
 
-        //se connecter à la base de donnée
+        // Se connecter à la base de données
         include "connexionBdd.php";
-        //extraire les infos du formulaire
+        // Extraire les infos du formulaire
         extract($_POST);
 
-        // vérifier que les champs ne sont pas vides
+        // Vérifier que les champs ne soient pas vides
         if (!empty($emailAdress && !empty($password))) {
-            echo $emailAdress . 'et' . $password;
 
-            // on nettoie l'adresse mail
+            // On nettoie l'adresse mail
             $emailAdress = filter_var($emailAdress, FILTER_SANITIZE_EMAIL);
 
-            // on vérifie si l'adresse mail est valide
+            // On vérifie si l'adresse mail est valide
             if (filter_var($emailAdress, FILTER_VALIDATE_EMAIL)) {
                 
-                // on hache le mdp
+                // On hache le mdp
                 $password = sha1($password);
-                // on verifie si les données del'utilisateur corresponde à un user en bdd
+                // On verifie si les données del'utilisateur correspondent à un utilisateur en bdd
                 $selectUser = $db->query("SELECT * FROM `user` WHERE emailAdress = '$emailAdress' AND password = '$password'");
 
 
-                // si l'adresse mail et le mdp existe en bdd
+                // Si l'adresse mail et le mdp existe en bdd
                 if ($selectUser->rowCount() > 0) {
 
                     $status = 'connecter';
 
-                    // on update le status en connecter
+                    // On update le status en "connecter"
                     $updateStatus = $db->query("UPDATE `user` SET status = '$status' WHERE emailAdress = '$emailAdress' AND password = '$password'");
 
+                    // Si le status à été update
                     if ($updateStatus) {
 
+                        // On stocke le mail de l'utilisateur dans une variable globale
                         $_SESSION['userMail'] = $emailAdress;
                         
-                        //redirection vert la page chat
+                        // Et on redirige l'utilisateur vers la page de chat
                         header("Location:homeChat.php");
                     } else {
                         $error = urlencode('Une erreur est survenue veuillez réessayer');

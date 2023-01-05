@@ -12,6 +12,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     background: #4269E2;
+    /* background: #e242ad; */
 }
 
 html {
@@ -24,15 +25,18 @@ h1 {
     font-size: 2rem;
 }
 p {
-    font-size: 15px;
+    font-size: 0.7rem;
 }
 h1, p {
     font-weight: 100;
     text-align: center;
 }
-a {
+a:not(.linkLoginRegister) {
     text-decoration: none;
     color: #ffff;
+}
+a.linkLoginRegister {
+    color: #00C2FF;
 }
 
 section.container {
@@ -157,12 +161,8 @@ form input::placeholder {
 /* * HOMECHAT */
 
 header h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 0;
-    /* max-width: 100px; */
-    /* white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis; */
 }
 h2 {
     font-size: 1.3rem;
@@ -173,8 +173,8 @@ h3 {
     font-weight: 300;
 }
 .imageProfil {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     background-size: cover;
     border-radius: 50%;
 }
@@ -236,7 +236,16 @@ input.searchInput {
     margin-bottom: 2rem;
     max-height: 350px;
     overflow-y: auto;
+    padding-right: 20px;
 }
+.usersList::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+.usersList::-webkit-scrollbar-thumb {
+    background: #757575;
+}
+
 .usersList .user {
     display: flex;
     align-items: center;
@@ -272,8 +281,8 @@ section.container.chat {
 }
 section.container.chat .chatContainer {
     position: relative;
-    min-height: 500px;
-    max-height: 500px;
+    min-height: 300px;
+    max-height: 300px;
     overflow-y: auto;
 
     display: flex;
@@ -285,8 +294,8 @@ section.container.chat .chatContainer {
 }
 section.container.chat div.arrowReturn {
     background: url(assets/arrowReturn.png) ;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background-size: cover;
 }
 section.container.chat i.searchIcon {
@@ -306,24 +315,20 @@ section.container.chat form textarea {
 }
 
 section.container.chat span.dateMessage {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin: 0 auto;
 }
 section.container.chat span.hourMessage {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     width: fit-content;
-     /* display: block; */
-    /* text-align: end;  */
 }
 section.container.chat span.hourMessage.right {
     margin-left: auto;
 }
 section.container.chat .messageSend {
-    padding: 10px;
-    /* display: flex; */
-    line-height: 1.3rem;
+    padding: 3px;
+    line-height: 1rem;
     max-width: calc(100% - 130px);
-    /* width: fit-content; */
     position: relative;
 }
 section.container.chat .messageSend::after {
